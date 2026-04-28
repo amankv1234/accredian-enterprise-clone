@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 
 export default function CTA() {
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -25,7 +25,7 @@ export default function CTA() {
 
       if (response.ok && data.success) {
         setStatus("success");
-        setFormData({ name: "", email: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setStatus("error");
         setErrorMessage(data.message || "Something went wrong. Please check your input.");
@@ -60,12 +60,12 @@ export default function CTA() {
             </p>
           </div>
 
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-lg">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] shadow-4xl relative overflow-hidden"
+              className="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2.5rem] shadow-4xl relative overflow-hidden"
             >
               {status === "success" ? (
                 <motion.div 
@@ -86,43 +86,71 @@ export default function CTA() {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white"
+                        placeholder="Jane Cooper"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">
+                        Business Email
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white"
+                        placeholder="jane@company.com"
+                      />
+                    </div>
+                  </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 ml-1">
-                      Full Name
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">
+                      Phone Number
                     </label>
                     <input
-                      type="text"
+                      type="tel"
                       required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white text-lg"
-                      placeholder="Jane Cooper"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white"
+                      placeholder="+91 99999 99999"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 ml-1">
-                      Business Email
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 ml-1">
+                      Your Message
                     </label>
-                    <input
-                      type="email"
+                    <textarea
                       required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white text-lg"
-                      placeholder="jane@company.com"
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-5 py-3.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-4 focus:ring-brand-500/10 outline-none transition-all dark:text-white resize-none"
+                      placeholder="Tell us about your team's needs..."
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-5 rounded-2xl font-bold text-xl transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
+                    className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
                   >
                     {status === "loading" ? (
                       <Loader2 className="animate-spin" />
                     ) : (
                       <>
-                        <Send size={20} />
+                        <Send size={18} />
                         Get Free Strategy
                       </>
                     )}

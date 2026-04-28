@@ -5,6 +5,8 @@ import { z } from "zod";
 const leadSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  message: z.string().min(5, "Message must be at least 5 characters"),
 });
 
 // Temporary in-memory storage for mock
@@ -28,13 +30,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email } = validation.data;
+    const { name, email, phone, message } = validation.data;
 
     // Store data (mock)
     const newLead = {
       id: Date.now(),
       name,
       email,
+      phone,
+      message,
       createdAt: new Date().toISOString(),
     };
     
