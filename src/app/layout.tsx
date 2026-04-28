@@ -14,9 +14,38 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://accredian-enterprise.vercel.app'),
   title: "Accredian Enterprise | Upskill Your Workforce",
   description: "Transform your organization with Accredian's enterprise learning solutions. Re-skilling and up-skilling for the modern digital age.",
+  keywords: ["Enterprise Learning", "Upskilling", "Reskilling", "Digital Transformation", "Corporate Training", "AI Learning", "Data Science Training"],
+  authors: [{ name: "Accredian" }],
+  openGraph: {
+    title: "Accredian Enterprise | Upskill Your Workforce",
+    description: "Transform your organization with Accredian's enterprise learning solutions.",
+    url: "https://accredian-enterprise.vercel.app",
+    siteName: "Accredian Enterprise",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Accredian Enterprise Learning",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accredian Enterprise | Upskill Your Workforce",
+    description: "Transform your organization with Accredian's enterprise learning solutions.",
+    images: ["/images/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
+
 
 export default function RootLayout({
   children,

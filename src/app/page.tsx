@@ -6,6 +6,7 @@ import Stats from "@/components/sections/stats";
 import Features from "@/components/sections/features";
 import HowItWorks from "@/components/sections/how-it-works";
 import Testimonials from "@/components/sections/testimonials";
+import FAQSection from "@/components/sections/faq-section";
 import CTA from "@/components/sections/cta";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { FloatingCTA } from "@/components/ui/floating-cta";
@@ -22,6 +23,7 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Testimonials />
+      <FAQSection />
       <CTA />
       <Footer />
       <FloatingCTA />

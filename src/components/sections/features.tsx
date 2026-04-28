@@ -60,7 +60,7 @@ export default function Features() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -68,13 +68,13 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="p-8 rounded-[2.5rem] glass dark:glass-dark group transition-all duration-300"
+              whileHover={{ y: -8 }}
+              className="p-10 rounded-[3rem] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/20 dark:shadow-none hover:shadow-2xl transition-all duration-300 flex flex-col items-start text-left"
             >
-              <div className="w-16 h-16 rounded-2xl bg-white dark:bg-slate-800 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <div className="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center mb-8 border border-brand-100 dark:border-brand-500/20">
                 {feature.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white group-hover:text-brand-600 transition-colors">
+              <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
                 {feature.title}
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">

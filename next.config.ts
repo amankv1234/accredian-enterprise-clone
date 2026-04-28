@@ -10,6 +10,8 @@ const withPWA = require("next-pwa")({
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: "standalone",
+  turbopack: {},
   // Silence workspace root warning and ensure correct root detection
   outputFileTracingRoot: path.join(__dirname),
 };
