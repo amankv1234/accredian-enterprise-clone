@@ -29,6 +29,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      const offsetTop = elem.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+      // Update URL hash without jumping
+      window.history.pushState(null, "", href);
+    }
+  };
+
   if (!mounted) return null;
 
   return (
@@ -58,13 +74,14 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.name}
               href={link.href}
-              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+              onClick={(e) => scrollToSection(e, link.href)}
+              className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors cursor-pointer"
             >
               {link.name}
-            </Link>
+            </a>
           ))}
           
           <div className="h-6 w-[1px] bg-slate-200 dark:bg-slate-800" />
@@ -78,12 +95,13 @@ export default function Navbar() {
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </motion.button>
 
-          <Link
+          <a
             href="#cta"
-            className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-lg"
+            onClick={(e) => scrollToSection(e, "#cta")}
+            className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
           >
             Get Started
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -114,22 +132,22 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400"
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 cursor-pointer"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
-              <Link
+              <a
                 href="#cta"
-                onClick={() => setIsOpen(false)}
-                className="bg-brand-600 text-white px-6 py-4 rounded-2xl text-center font-bold shadow-xl"
+                onClick={(e) => scrollToSection(e, "#cta")}
+                className="bg-brand-600 text-white px-6 py-4 rounded-2xl text-center font-bold shadow-xl cursor-pointer"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}
@@ -137,3 +155,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
