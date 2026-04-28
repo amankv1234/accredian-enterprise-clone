@@ -253,5 +253,5 @@ docker run -p 3000:3000 accredian-enterprise
 ---
 
 <div align="center">
-Made with ❤️ by Aman Kumar
+Made with ❤️ by Aman Kumar Vishwakarma
 </div>
