@@ -14,7 +14,7 @@
 ### 🌟 Transform Your Team with AI-First Learning
 **A production-grade, full-stack enterprise learning management portal designed for the digital age.**
 
-[Live Demo](https://accredian-enterprise-clone.vercel.app) • [API Docs](#-api-documentation) • [Setup Guide](#-getting-started) • [Workflow](#-development-workflow)
+[Live Demo](https://accredian-enterprise-clone-jade.vercel.app/) • [API Docs](#-api-documentation) • [Setup Guide](#-getting-started) • [Workflow](#-development-workflow)
 
 </div>
 

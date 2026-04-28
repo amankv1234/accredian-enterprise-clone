@@ -14,7 +14,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://accredian-enterprise-clone.vercel.app'),
+  metadataBase: new URL('https://accredian-enterprise-clone-jade.vercel.app'),
   title: "Accredian Enterprise | Global Leader in Corporate Training & Upskilling",
   description: "Accelerate your team's growth with Accredian's AI-first learning solutions. Specialized programs in Data Science, AI, Product Management, and Leadership.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Accredian Enterprise | Upskill Your Workforce with AI",
     description: "Transform your organization with world-class learning solutions designed for the digital age.",
-    url: "https://accredian-enterprise-clone.vercel.app",
+    url: "https://accredian-enterprise-clone-jade.vercel.app",
     siteName: "Accredian Enterprise",
     images: [
       {
